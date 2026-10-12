@@ -1,0 +1,73 @@
+/* 第3课完整完成版 lesson‑03‑task.css */
+.portfolio-list {
+  /* TODO01 */
+  display: grid;
+  /* TODO02 */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.work-cover {
+  display: block;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: #edf1ea;
+}
+
+.work-cover img {
+  width: 100%;
+  height: 100%;
+  /* TODO03 */
+  object-fit: cover;
+}
+
+.work-card {
+  overflow: hidden;
+  border: 1px solid #ded8cb;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(52, 60, 56, 0.08);
+  /* TODO04‑1 过渡动画 */
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.work-card a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.work-copy {
+  padding: 20px 22px 24px;
+}
+
+.work-card:hover,
+.work-card:focus-within {
+  /* TODO04‑2 悬浮上浮 */
+  transform: translateY(-4px);
+  box-shadow: 0 16px 38px rgba(52, 60, 56, 0.14);
+}
+
+/* TODO05 手机小于640px变成单列 */
+@media (max-width: 640px) {
+  .portfolio-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* TODO06 h1动态字号 */
+h1 {
+  font-size: clamp(28px, 6vw, 46px);
+}
+
+/* 拓展自动网格，不启用 */
+.portfolio-list.is-auto-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+}
+
+/* 无障碍：减少动画 */
+@media (prefers-reduced-motion: reduce) {
+  .work-card {
+    transition: none;
+  }
+}

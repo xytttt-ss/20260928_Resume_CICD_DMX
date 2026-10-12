@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="noindex, nofollow" name="robots" />
+  <meta content="沈奇韬｜软件技术专业学生，前端学习个人主页，展示学习经历、技能与作品" name="description" />
+  <title>沈奇韬 - 个人主页</title>
+  <link href="assets/favicon.svg" rel="icon" type="image/svg+xml" />
+  <link href="styles.css" rel="stylesheet" />
+  <link href="lesson-03-task.css" rel="stylesheet" />
+
+  <style>
+    /* 好看的渐变背景 + 柔和装饰 */
+    body {
+      background: linear-gradient(135deg, #e0f4ff 0%, #f3e8ff 45%, #eafff3 100%);
+      background-attachment: fixed;
+      position: relative;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.45;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body::before {
+      width: 420px;
+      height: 420px;
+      background: #b8e0ff;
+      top: -80px;
+      left: -120px;
+    }
+
+    body::after {
+      width: 360px;
+      height: 360px;
+      background: #ffd6f1;
+      bottom: -100px;
+      right: -80px;
+    }
+
+    /* 回到顶部按钮 */
+    .back-to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.92);
+      color: #4f46e5;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.25);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.25s ease;
+      z-index: 999;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: #4f46e5;
+      color: #fff;
+    }
+
+    /* 导航栏滚动高亮 */
+    nav a {
+      position: relative;
+      padding: 6px 2px;
+      transition: color 0.2s ease;
+    }
+
+    nav a.active {
+      color: #4f46e5;
+      font-weight: 700;
+    }
+
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 3px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #6366f1, #a855f7);
+    }
+
+    /* 作品卡片更精致 */
+    .work-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .work-card:hover,
+    .work-card:focus-within {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(79, 70, 229, 0.18);
+    }
+
+    /* 页面内容区域增加白色卡片感 */
+    .section-content,
+    .profile-details,
+    .research-item,
+    .experience-item,
+    .teaching-group,
+    .publication-group {
+      background: rgba(255, 255, 255, 0.78);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(79, 70, 229, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    /* 个人信息卡片更整齐 */
+    .profile-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .profile-details div span {
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .profile-details div p {
+      margin: 4px 0 0;
+      font-weight: 600;
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#about">我的主页</a>
+      <nav aria-label="主导航">
+        <a href="#about">关于</a>
+        <a href="#experience">经历</a>
+        <a href="#projects">项目</a>
+        <a href="#skills">技能</a>
+        <a href="#portfolio">作品</a>
+        <a href="#teaching">学习实践</a>
+        <a href="#publications">学习记录</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="about">
+      <div class="container">
+        <div class="hero-top">
+          <div class="hero-copy">
+            <h1>沈奇韬 <span>Shen</span></h1>
+            <p class="hero-role">软件技术专业学生 · 前端开发学习者</p>
+            <p class="hero-school">我的学校 · 我的班级</p>
+          </div>
+          <div class="hero-visual">
+            <figure>
+              <img alt="沈奇韬个人头像" height="220" src="1.jpg" width="220" />
+            </figure>
+          </div>
+        </div>
+
+        <div class="research-direction" id="research-direction">
+          <span class="eyebrow">学习方向</span>
+          <p>HTML5、CSS3、JavaScript，正在学习 Git、数据库与网站部署，希望不断积累实战项目经验。</p>
+        </div>
+
+        <div class="profile-details">
+          <div>
+            <span>学习阶段</span>
+            <p>在校学习</p>
+          </div>
+          <div>
+            <span>所在城市</span>
+            <p>珠海</p>
+          </div>
+          <div>
+            <span>联系</span>
+            <p>请填写可公开的联系方式</p>
+          </div>
+          <div>
+            <span>学校地址</span>
+            <p>请填写自己的学校地址</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <header class="section-heading">
+          <h2>教育与工作经历</h2>
+        </header>
+        <div class="section-content">
+          <div class="experience-item">
+            <p class="experience-heading">
+              <strong>我的学校 · 软件技术专业</strong>
+              <time>在读</time>
+            </p>
+            <p class="experience-detail">系统学习网页前后端开发，通过课程项目积累开发经验，用项目记录个人成长。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <header class="section-heading">
+          <h2>项目经历</h2>
+        </header>
+        <div class="section-content">
+          <article class="research-item">
+            <h3><time>课程练习</time>个人主页网站</h3>
+            <p>项目内容：制作响应式个人展示网页，整理个人资料、技能与作品，完成编写、调试、测试与线上部署完整流程。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <header class="section-heading">
+          <h2>技能与实践</h2>
+        </header>
+        <div class="section-content">
+          <ul class="skills-list">
+            <li><strong>网页内容</strong>HTML5语义化结构、图片、超链接、页面锚点。</li>
+            <li><strong>页面样式</strong>CSS3选择器、变量、Grid/Flex布局、响应式适配。</li>
+            <li><strong>开发过程</strong>JavaScript基础、Git版本控制、网页调试与网站部署。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="container">
+        <header class="section-heading">
+          <h2>作品门户</h2>
+          <p class="works-notice">下方为课程示例作品，后续可替换为自己完成的项目。</p>
+        </header>
+        <ol class="portfolio-list">
+          <li class="work-card work-blog">
+            <a href="https://ffd-p2-blog.netlify.app/" rel="noopener noreferrer" target="_blank">
+              <div class="work-cover">
+                <img alt="长风成卷 · 博客应用截图" decoding="async" height="800" src="assets/work-blog.png" width="1200" />
+              </div>
+              <div class="work-copy">
+                <h3>长风成卷 · 博客应用</h3>
+                <p>文章展示、接口与数据库。</p>
+              </div>
+            </a>
+          </li>
+          <li class="work-card work-community">
+            <a href="https://ffd-p3-community.netlify.app/" rel="noopener noreferrer" target="_blank">
+              <div class="work-cover">
+                <img alt="群像云图 · 社区应用截图" decoding="async" height="800" src="assets/work-community.png" width="1200" />
+              </div>
+              <div class="work-copy">
+                <h3>群像云图 · 社区应用</h3>
+                <p>内容发布与社区互动。</p>
+              </div>
+            </a>
+          </li>
+          <li class="work-card work-greeting-card">
+            <a href="https://ffd-p4-greeting-card.netlify.app/" rel="noopener noreferrer" target="_blank">
+              <div class="work-cover">
+                <img alt="一笺心意 · 祝福卡片截图" decoding="async" height="800" src="assets/work-greeting-card.png" width="1200" />
+              </div>
+              <div class="work-copy">
+                <h3>一笺心意 · 祝福卡片</h3>
+                <p>卡片制作与作品分享。</p>
+              </div>
+            </a>
+          </li>
+          <li class="work-card work-music-station">
+            <a href="https://ffd-p5-music-station.netlify.app/" rel="noopener noreferrer" target="_blank">
+              <div class="work-cover">
+                <img alt="星声音乐站 · 音乐应用截图" decoding="async" height="800" src="assets/work-music-station.png" width="1200" />
+              </div>
+              <div class="work-copy">
+                <h3>星声音乐站 · 音乐应用</h3>
+                <p>网页音频与交互实践。</p>
+              </div>
+            </a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="teaching">
+      <div class="container">
+        <header class="section-heading">
+          <h2>学习与实践</h2>
+        </header>
+        <div class="section-content">
+          <div class="teaching-group">
+            <h3>本学期学习目标</h3>
+            <ol>
+              <li>每节课完成可运行的网页修改，持续迭代个人项目。</li>
+              <li>可以理解并讲解自己写的 HTML、CSS、JavaScript 代码。</li>
+              <li>熟练使用Git管理代码版本，能够把项目部署到线上公开访问。</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="publications">
+      <div class="container">
+        <header class="section-heading">
+          <h2>学习记录</h2>
+        </header>
+        <div class="section-content">
+          <div class="publication-group">
+            <h3>我的成长记录</h3>
+            <ol class="references">
+              <li>完成第一版响应式个人主页。</li>
+              <li>后续在这里补充课程作业、项目成果。</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a href="#about">回到顶部</a>
+      <a href="#portfolio">作品门户</a>
+      <p style="margin-top:12px; font-size:14px; color:#666;">© 2026 沈奇韬 · 课程练习项目</p>
+    </div>
+  </footer>
+
+  <!-- 回到顶部按钮 -->
+  <button class="back-to-top" id="backToTop" title="回到顶部">↑</button>
+
+  <script>
+    // 回到顶部按钮显示/隐藏
+    const backToTopBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // 导航栏滚动高亮
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+<!-- 本课任务详见课堂任务.md。 -->
+</html>
